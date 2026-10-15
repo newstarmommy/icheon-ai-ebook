@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 이미지 세계 여행 · 2시간 실습 교안</title>
+<style>
+:root{--ink:#182b38;--blue:#165b71;--paper:#f5f2eb;--line:#dcdedc;--orange:#eab56b}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:20px;line-height:1.75}header{background:var(--ink);color:white;padding:64px max(6vw,24px)}header .eyebrow{color:var(--orange);letter-spacing:3px;font-size:17px}h1{font-size:clamp(34px,5vw,62px);line-height:1.3;margin:18px 0}h2{font-size:32px;line-height:1.4}h3{font-size:25px;line-height:1.5}p{margin:12px 0}main{max-width:1160px;margin:auto;padding:20px 24px 70px}section{scroll-margin-top:90px;margin:34px 0;padding:32px;background:white;border-radius:20px;border:1px solid var(--line)}nav{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow:auto;padding:12px 20px;background:#ffffffed;border-bottom:1px solid var(--line)}nav a{white-space:nowrap;text-decoration:none;color:var(--blue);padding:5px 12px;font-weight:bold}button{font:inherit;font-weight:bold;padding:11px 20px;border:0;border-radius:10px;background:var(--blue);color:white;cursor:pointer}button:hover{background:#0b3d51}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:4px solid var(--orange);outline-offset:3px}[hidden]{display:none!important}#regionFilters{margin-bottom:24px}#regionFilters button[aria-pressed="false"]{background:#e9efef;color:var(--ink)}.sample{margin:18px 0 8px}.sample img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;border-radius:12px;background:#f5f2eb}.sample figcaption{font-size:15px;color:#526570;margin-top:8px}.sample-action{display:inline-block;padding:8px 14px;border-radius:9px;background:#edf3f3;color:var(--blue);text-decoration:none;font-size:17px;font-weight:bold}.sample-action:focus-visible{outline:4px solid var(--orange)}.card>.actions{margin-bottom:16px}.secondary{background:#e9efef;color:var(--ink)}.lead{font-size:24px;max-width:900px}.pill{display:inline-block;border-radius:30px;background:#edf3f3;padding:3px 14px;font-size:17px;color:var(--blue)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff}.card h3{margin:8px 0}.card p{font-size:18px}.note{padding:18px 22px;border-left:6px solid var(--orange);background:#fff5e5;border-radius:8px;margin:20px 0}.steps{counter-reset:step;list-style:none;padding:0}.steps li{counter-increment:step;padding:14px 0 14px 56px;position:relative;border-bottom:1px solid var(--line)}.steps li:before{content:counter(step);position:absolute;left:0;top:16px;background:var(--blue);color:white;border-radius:50%;width:36px;height:36px;text-align:center;line-height:36px}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line)}th{background:#edf3f3}textarea{width:100%;min-height:230px;border:1px solid #bccbce;border-radius:10px;padding:16px;font:inherit;font-size:18px;line-height:1.7;resize:vertical;background:#fafcfc;color:var(--ink)}.actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}.status{font-size:17px;color:var(--blue)}.bigline{font-size:28px;font-weight:bold;color:var(--blue)}footer{text-align:center;font-size:17px;color:#526570;padding:20px}.check{display:block;padding:10px 0}.check input{width:23px;height:23px;vertical-align:middle;margin-right:12px}.teacher{background:#eff4f5}.small{font-size:17px}.tablewrap{overflow:auto}@media(max-width:720px){.grid{grid-template-columns:1fr}section{padding:22px}body{font-size:18px}h2{font-size:27px}main{padding:12px}th,td{padding:9px;min-width:90px}}@media print{nav,button,.status{display:none}header{padding:20px;background:white;color:#182b38}header .eyebrow{color:#165b71}body{font-size:12pt;background:white}main{padding:0}section{margin:14px 0;padding:16px;break-inside:avoid}.grid{display:block}.card{margin:12px 0;break-inside:avoid}textarea{min-height:150px;font-size:11pt}h1{font-size:30pt}h2{font-size:21pt}h3{font-size:16pt}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">AI IMAGE WORLD TOUR · 120 MINUTES</div><h1>같은 생각, 다른 그림<br>AI 이미지 세계 여행</h1><p class="lead">한국 · 유럽 · 미국의 미술과 시각 표현에서 영감을 받은 이미지를 만들고, 카카오톡 채팅방에 공유해 봅니다.</p><p>오늘의 순서: <strong>프롬프트 복사 → AI에 붙여넣기 → 이미지 만들기 → 저장 → 카카오톡 공유</strong></p></header>
+<nav aria-label="교안 이동"><a href="#start">수업 안내</a><a href="#schedule">120분 시간표</a><a href="#practice">복사 실습</a><a href="#prompts">스타일 프롬프트</a><a href="#share">카카오톡 공유</a><a href="#finish">마무리</a></nav>
+<main>
+<section id="start"><span class="pill">오늘의 목표</span><h2>오늘은 그림을 잘 그리지 않아도 괜찮아요</h2><div class="grid"><div><h3>수업이 끝나면 할 수 있어요</h3><ul><li>프롬프트를 복사하고 AI 입력창에 붙여넣기</li><li>같은 소재를 서로 다른 스타일로 만들기</li><li>완성된 이미지를 저장하고 카카오톡으로 보내기</li></ul></div><div><h3>시작 전 준비</h3><ul><li>수업에서 사용할 이미지 생성 AI에 로그인</li><li>카카오톡 로그인 및 수업 채팅방 확인</li><li>스마트폰 또는 PC, 인터넷 연결</li><li>PC 실습은 카카오톡 PC 버전 준비</li></ul></div></div><div class="note">완성 목표는 <strong>이미지 2장 + 카카오톡 공유 1회</strong>입니다. 생성이 오래 걸리면 첫 번째 이미지 한 장으로 공유를 먼저 해봅니다.</div><p class="small">아래 스타일은 특정 지역의 모든 문화를 대표하지 않습니다. 전통 회화, 포스터, 삽화 등 다양한 표현을 체험하는 예시입니다. AI 화면의 메뉴 이름은 서비스와 기기에 따라 다를 수 있습니다.</p></section>
+<section id="schedule"><h2>2시간 수업 흐름</h2><div class="tablewrap"><table><thead><tr><th>경과 시간</th><th>소요</th><th>활동</th><th>확인할 결과</th></tr></thead><tbody><tr><td>00–10분</td><td>10분</td><td>준비 및 목표 안내</td><td>AI와 채팅방 열기</td></tr><tr><td>10–25분</td><td>15분</td><td>강사 시연, 복사·붙여넣기 연습</td><td>입력창에 프롬프트 넣기</td></tr><tr><td>25–45분</td><td>20분</td><td>한국 스타일 첫 이미지 만들기</td><td>이미지 1장 생성·저장</td></tr><tr><td>45–65분</td><td>20분</td><td>유럽 또는 미국 스타일로 바꾸기</td><td>이미지 2장 비교</td></tr><tr><td>65–75분</td><td>10분</td><td>휴식 및 개별 도움</td><td>저장 위치 확인</td></tr><tr><td>75–95분</td><td>20분</td><td>카카오톡 이미지 공유</td><td>채팅방에 이미지 전송</td></tr><tr><td>95–110분</td><td>15분</td><td>나만의 소재로 수정·재생성</td><td>수정 프롬프트 체험</td></tr><tr><td>110–120분</td><td>10분</td><td>감상 및 마무리</td><td>좋아하는 스타일 한 문장 발표</td></tr></tbody></table></div><p class="small">강사 운영 팁: 생성 대기 시간에는 옆 사람의 프롬프트를 함께 읽어보세요. 생성 횟수 제한이 있으면 기본 실습 2장을 우선하고 추가 실습은 선택으로 진행합니다.</p></section>
+<section id="practice"><span class="pill">10–25분 · 함께 따라 하기</span><h2>텍스트 복사와 이미지 공유는 서로 달라요</h2><p class="bigline">먼저 글을 AI에게 보내고, 나중에 완성된 그림을 카카오톡에 보냅니다.</p><ol class="steps"><li>아래 프롬프트 카드에서 <strong>프롬프트 복사</strong> 버튼을 누릅니다.</li><li>사용 중인 AI 화면으로 이동하고 <strong>메시지 입력창</strong>을 선택합니다.</li><li>PC는 <strong>Ctrl + V</strong>, 스마트폰은 입력창을 길게 누른 후 <strong>붙여넣기</strong>를 선택합니다.</li><li>글이 들어갔는지 확인한 뒤 전송합니다. 이미지 생성 기능이 별도로 있으면 해당 기능을 선택합니다.</li><li>이미지가 완성될 때까지 기다립니다. 완성되면 크게 열어서 확인합니다.</li></ol><div class="note">복사 버튼이 작동하지 않으면 프롬프트 글 상자를 선택하세요. PC는 <strong>Ctrl + A → Ctrl + C</strong>, 스마트폰은 글을 길게 눌러 <strong>전체 선택 → 복사</strong>합니다.</div><div class="teacher card"><h3>강사 시연 문장</h3><p>“지금은 글을 복사합니다. AI 입력창을 누르고 붙여넣습니다. 전송한 뒤 그림이 나오면 저장합니다. 마지막에는 그 그림을 카카오톡으로 보내겠습니다.”</p><p>시연은 1번 한국 민화 카드로 진행하세요. 클릭·선택·붙여넣기 단계를 천천히 한 번씩 보여줍니다.</p></div></section>
+<section id="prompts"><span class="pill">25–65분 · 이미지 만들기</span><h2>원하는 스타일을 골라 복사하세요</h2><p>첫 번째는 <strong>한국 스타일</strong>, 두 번째는 <strong>유럽 또는 미국 스타일</strong>을 골라보세요. 한국·유럽·미국 각각 10개씩, 총 30개 중 2개를 선택합니다. 꽃과 작은 찻집을 공통 소재로 삼아 비교해 보세요.</p><p class="small">글 상자 내용을 직접 바꾼 뒤 복사할 수도 있습니다. 아래 30장의 샘플은 각 프롬프트로 AI가 생성한 수업용 예시입니다. 작가의 실제 작품과 구별해 주세요. 같은 프롬프트를 사용해도 결과는 매번 달라질 수 있습니다.</p><div class="note">작가 이름은 학습용 참고입니다. 색·선·질감의 특징을 함께 제시했습니다. 추상화는 찻집의 형태보다 분위기를 표현합니다. 유럽은 여러 나라를 묶은 지역이며 카드에 나라를 표시했습니다. 30개 중 2개만 골라 실습합니다.</div><div class="actions" id="regionFilters"><button type="button" data-region="전체" aria-pressed="true">전체 30개</button><button type="button" data-region="한국" aria-pressed="false">한국 10개</button><button type="button" data-region="유럽" aria-pressed="false">유럽 10개</button><button type="button" data-region="미국" aria-pressed="false">미국 10개</button></div><div class="grid" id="cards"></div><p class="small">화풍 참고: <a href="https://www.moma.org/collection/terms/" target="_blank" rel="noopener">MoMA 미술 용어</a> · <a href="https://www.metmuseum.org/ko/collections/535" target="_blank" rel="noopener">메트로폴리탄미술관 한국 미술</a></p></section>
+<section><span class="pill">95–110분 · 선택 실습</span><h2>한 가지씩 바꾸면 더 쉬워요</h2><p><strong>기본 공식:</strong> 무엇을 그릴까 + 어떤 스타일로 + 어떤 색과 분위기로 + 어떤 화면 모양으로</p><div class="grid"><div class="card"><h3>소재 바꾸기</h3><p>작은 찻집 → 우리 집 정원 / 내가 좋아하는 꽃 / 나의 취미 공간 / 미래의 가게</p><h3>분위기 바꾸기</h3><p>따뜻하고 편안하게 / 밝고 활기차게 / 차분하고 고급스럽게</p></div><div class="card"><h3>이미지 생성 후 추가 요청</h3><p>“이 그림의 구도는 유지하고 색을 파스텔톤으로 바꿔줘.”</p><p>“꽃을 더 크게 보여주고 배경은 단순하게 바꿔줘.”</p><p>“디지털 명함에 사용할 수 있도록 오른쪽에 빈 여백을 만들어줘. 글자는 넣지 말아줘.”</p></div></div><div class="note">자신의 이름·전화번호 등은 이미지 생성 프롬프트에 넣지 않아도 됩니다. 오늘은 그림에 글자를 넣지 않고 스타일에 집중합니다.</div></section>
+<section id="share"><span class="pill">75–95분 · 카카오톡으로 보내기</span><h2>완성된 이미지를 수업 채팅방에 공유해요</h2><div class="grid"><div class="card"><h3>PC에서 바로 붙여넣기</h3><ol class="steps"><li>완성된 이미지를 크게 열고 마우스 오른쪽 버튼을 누릅니다.</li><li><strong>이미지 복사</strong> 메뉴가 보이면 선택합니다. ‘링크 복사’와 구별하세요.</li><li>카카오톡의 <strong>수업 채팅방</strong>을 열고 메시지 입력칸을 누릅니다.</li><li><strong>Ctrl + V</strong>를 누릅니다.</li><li>그림 미리보기가 나타나는지 확인한 뒤 <strong>전송</strong>을 누릅니다.</li></ol><p class="small">이미지 복사 메뉴가 없거나 붙여넣기가 되지 않으면 아래 저장·첨부 방법을 사용합니다.</p></div><div class="card"><h3>PC에서 저장 후 첨부</h3><ol class="steps"><li>AI 화면의 다운로드·저장 버튼 또는 이미지의 <strong>다른 이름으로 저장</strong>을 선택합니다.</li><li>저장 위치와 파일 이름을 확인합니다. 예: 다운로드 폴더, 한국_민화.png</li><li>카카오톡 수업 채팅방의 <strong>파일 첨부(+ 등)</strong> 메뉴를 엽니다.</li><li>저장한 이미지 파일을 선택합니다. 파일을 입력칸으로 끌어놓는 방법도 가능합니다.</li><li>보낼 이미지와 채팅방을 확인하고 전송합니다.</li></ol></div><div class="card"><h3>스마트폰에서 사진 보내기</h3><ol class="steps"><li>AI에서 완성된 이미지를 열고 <strong>다운로드·이미지 저장</strong> 기능을 선택합니다. 앱에 따라 이미지를 길게 눌러 저장할 수 있습니다.</li><li>사진 앱 또는 갤러리에서 저장된 이미지를 확인합니다.</li><li>카카오톡 수업 채팅방을 엽니다.</li><li>입력창 옆의 <strong>+ → 앨범/사진</strong>을 선택하고 저장한 그림을 고릅니다.</li><li>미리보기와 채팅방을 확인한 뒤 전송합니다.</li></ol><p class="small">스마트폰에서는 이미지 붙여넣기를 지원하지 않을 수 있어 저장 후 사진 첨부로 진행합니다.</p></div><div class="card"><h3>이미지와 함께 보낼 한 문장</h3><p>“제가 만든 한국 민화 스타일 찻집입니다. 따뜻한 색이 마음에 들어요.”</p><p>“같은 찻집을 유럽 수채화 스타일로 바꿔봤습니다.”</p><div class="note">전송 전 확인: <strong>수업 채팅방이 맞나요? 그림 미리보기가 보이나요?</strong> 링크나 프롬프트 글만 들어갔다면 이미지 저장·첨부로 다시 해보세요.</div></div></div></section>
+<section><h2>막히면 여기서 확인하세요</h2><div class="tablewrap"><table><thead><tr><th>상황</th><th>해결 방법</th></tr></thead><tbody><tr><td>복사 버튼을 눌러도 안 돼요</td><td>글 상자를 선택하고 직접 전체 선택·복사합니다.</td></tr><tr><td>AI가 글로만 답해요</td><td>“이 설명으로 이미지를 생성해줘”라고 요청하고 이미지 생성 기능을 확인합니다.</td></tr><tr><td>이미지 생성이 오래 걸려요</td><td>잠시 기다리며 다음 스타일을 고릅니다. 반복 전송은 피하고 생성 상태를 확인합니다.</td></tr><tr><td>저장한 사진이 안 보여요</td><td>PC는 다운로드 폴더, 스마트폰은 사진 앱의 최근 항목을 확인합니다. 필요한 사진 접근 권한도 확인합니다.</td></tr><tr><td>카카오톡에 글이나 주소만 붙어요</td><td>완성된 이미지 파일을 저장한 뒤 사진·파일 첨부로 보냅니다.</td></tr><tr><td>생성 횟수를 다 썼어요</td><td>이미 만든 그림으로 저장·공유를 마무리합니다. 추가 스타일은 프롬프트만 비교해 봅니다.</td></tr></tbody></table></div></section>
+<section id="finish"><span class="pill">110–120분 · 감상과 마무리</span><h2>오늘의 성공 체크</h2><label class="check"><input type="checkbox">프롬프트를 복사해 AI에 붙여넣었어요.</label><label class="check"><input type="checkbox">서로 다른 스타일의 이미지를 비교했어요.</label><label class="check"><input type="checkbox">이미지를 저장하고 저장 위치를 확인했어요.</label><label class="check"><input type="checkbox">카카오톡 수업 채팅방에 이미지를 보냈어요.</label><p class="bigline">“저는 ______ 스타일이 좋았어요. 이유는 ______입니다.”</p><p>다음 활용: 마음에 드는 이미지를 디지털 명함의 배경이나 소개 이미지로 활용해 보세요.</p><button class="secondary" onclick="window.print()">교안 인쇄 / PDF 저장</button></section>
+</main><footer>AI와 함께 만드는 나의 디지털 명함 · 이미지 스타일 탐험 실습 교안</footer>
+<script>
+const prompts=[
+  [
+    "한국",
+    "01 · 민화 — 화조도",
+    "꽃과 새, 평면적 구성, 선명한 색",
+    "꽃이 있는 작은 찻집을 민화 — 화조도에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 장식적인 꽃과 새, 모란꽃, 섬세한 윤곽선, 붉은색과 청록색. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "한국",
+    "02 · 민화 — 책거리",
+    "책과 물건을 배치한 정물화",
+    "꽃이 있는 작은 찻집을 민화 — 책거리에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 책장, 책과 문방구, 찻잔과 꽃병을 층층이 배치한 정물, 장식적인 색채. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "한국",
+    "03 · 정선 — 진경산수",
+    "실제 풍경을 관찰한 산수",
+    "꽃이 있는 작은 찻집을 정선 — 진경산수에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 한국의 바위산과 한옥, 힘 있는 먹선, 바위의 질감과 넓은 여백. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "한국",
+    "04 · 김홍도 — 풍속화",
+    "일상과 생동감 있는 인물",
+    "꽃이 있는 작은 찻집을 김홍도 — 풍속화에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 마당에서 꽃을 돌보고 차를 마시는 사람들, 자연스러운 동작, 담백한 색과 생동감 있는 먹선. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "한국",
+    "05 · 신윤복 — 풍속화",
+    "섬세한 선과 우아한 색",
+    "꽃이 있는 작은 찻집을 신윤복 — 풍속화에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 차를 즐기는 한복 차림의 사람들, 섬세한 윤곽선과 옷의 색, 자연스러운 시선. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "한국",
+    "06 · 신사임당 — 초충도",
+    "작은 풀꽃과 곤충의 관찰",
+    "꽃이 있는 작은 찻집을 신사임당 — 초충도에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 정원의 들꽃과 나비, 작은 풀벌레를 중심으로 섬세한 선과 은은한 색, 차분한 여백. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "한국",
+    "07 · 김정희 — 문인화",
+    "절제된 먹선과 여백",
+    "꽃이 있는 작은 찻집을 김정희 — 문인화에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 소나무 옆 작은 집, 절제된 마른 먹선, 담백한 나무와 넓은 여백. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "한국",
+    "08 · 이중섭 — 표현적인 선",
+    "힘 있는 선과 소박한 생명감",
+    "꽃이 있는 작은 찻집을 이중섭 — 표현적인 선에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 마당에서 뛰노는 아이들과 동물, 굵고 힘 있는 선, 단순한 형태와 따뜻한 흙빛. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "한국",
+    "09 · 박수근 — 질감 있는 회화",
+    "거친 표면과 차분한 색",
+    "꽃이 있는 작은 찻집을 박수근 — 질감 있는 회화에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 꽃을 파는 사람과 오가는 이웃, 화강암처럼 거친 표면, 단순한 형태와 회갈색·베이지색. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "한국",
+    "10 · 김환기 — 점화",
+    "작은 점의 반복과 깊은 푸른색",
+    "꽃이 있는 작은 찻집을 김환기 — 점화에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 사물의 형태 대신 분위기를 표현하는 추상화, 깊고 다양한 푸른색, 작은 점의 반복과 부드러운 리듬. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "유럽 · 프랑스",
+    "01 · 클로드 모네 — 인상주의",
+    "빛의 변화와 짧은 붓질",
+    "꽃이 있는 작은 찻집을 클로드 모네 — 인상주의에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 야외의 부드러운 햇빛, 짧은 붓질, 밝은 꽃과 잎, 공기처럼 부드러운 경계. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "유럽 · 네덜란드",
+    "02 · 빈센트 반 고흐 — 후기인상주의",
+    "굽이치는 붓질과 강렬한 색",
+    "꽃이 있는 작은 찻집을 빈센트 반 고흐 — 후기인상주의에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 두꺼운 물감, 굽이치는 붓질, 노랑과 파랑의 대비, 생동감 있는 꽃과 하늘. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "유럽 · 프랑스",
+    "03 · 조르주 쇠라 — 점묘법",
+    "작은 색점들이 만드는 화면",
+    "꽃이 있는 작은 찻집을 조르주 쇠라 — 점묘법에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 작은 색점을 촘촘하게 찍어 표현한 꽃과 테이블, 밝은 햇살과 차분한 구도. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "유럽 · 프랑스",
+    "04 · 앙리 마티스 — 야수주의",
+    "자유로운 색과 넓은 색면",
+    "꽃이 있는 작은 찻집을 앙리 마티스 — 야수주의에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 실제 색에 얽매이지 않는 빨강과 초록, 자유로운 선과 넓고 평평한 색면. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "유럽 · 스페인",
+    "05 · 파블로 피카소 — 입체주의",
+    "여러 시점과 기하학적 분할",
+    "꽃이 있는 작은 찻집을 파블로 피카소 — 입체주의에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 찻잔과 꽃병을 여러 시점으로 나누고 삼각형과 사각형의 면으로 재구성, 갈색과 청회색. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "유럽 · 오스트리아",
+    "06 · 구스타프 클림트 — 장식 회화",
+    "금빛과 반복 문양",
+    "꽃이 있는 작은 찻집을 구스타프 클림트 — 장식 회화에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 금빛 배경, 원과 사각형의 반복 문양, 섬세한 꽃 장식과 우아한 화면. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "유럽 · 체코",
+    "07 · 알폰스 무하 — 아르누보",
+    "흐르는 곡선과 식물 장식",
+    "꽃이 있는 작은 찻집을 알폰스 무하 — 아르누보에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 흐르는 곡선, 꽃과 잎의 장식 테두리, 크림색과 연두색의 우아한 조화. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "유럽 · 노르웨이",
+    "08 · 에드바르 뭉크 — 표현주의",
+    "감정을 드러내는 색과 선",
+    "꽃이 있는 작은 찻집을 에드바르 뭉크 — 표현주의에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 굽은 선과 과장된 색, 단순한 형태, 주황빛 하늘과 파란 그림자로 표현한 고요함과 그리움. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "유럽 · 스페인",
+    "09 · 살바도르 달리 — 초현실주의",
+    "꿈처럼 낯선 조합",
+    "꽃이 있는 작은 찻집을 살바도르 달리 — 초현실주의에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 공중에 뜬 찻잔, 구름처럼 자라는 꽃, 문 너머의 바다, 정교한 빛과 그림자로 묘사한 꿈의 장면. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "유럽 · 네덜란드",
+    "10 · 피트 몬드리안 — 신조형주의",
+    "수직·수평선과 기본색",
+    "꽃이 있는 작은 찻집을 피트 몬드리안 — 신조형주의에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 사물의 형태를 수직선과 수평선, 사각형으로 단순화한 추상화, 검은 선과 흰 바탕, 빨강·노랑·파랑. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "미국",
+    "01 · 앤디 워홀 — 팝아트",
+    "반복 이미지와 인쇄 색감",
+    "꽃이 있는 작은 찻집을 앤디 워홀 — 팝아트에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 같은 찻집 장면을 네 칸에 반복하고 각 칸의 분홍·노랑·청록·보라 조합을 바꾼 실크스크린 같은 평평한 인쇄 질감. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "미국",
+    "02 · 로이 리히텐슈타인 — 팝아트",
+    "인쇄 점무늬와 굵은 윤곽",
+    "꽃이 있는 작은 찻집을 로이 리히텐슈타인 — 팝아트에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 굵은 검은 윤곽선, 빨강·노랑·파랑, 규칙적인 인쇄 점무늬로 표현한 만화 같은 화면, 말풍선 없음. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "미국",
+    "03 · 에드워드 호퍼 — 사실주의",
+    "고요한 공간과 선명한 햇빛",
+    "꽃이 있는 작은 찻집을 에드워드 호퍼 — 사실주의에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 창으로 들어오는 선명한 햇빛과 긴 그림자, 조용한 테이블과 꽃병, 작은 인물 한 명. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "미국",
+    "04 · 조지아 오키프 — 꽃 회화",
+    "확대한 꽃과 부드러운 곡선",
+    "꽃이 있는 작은 찻집을 조지아 오키프 — 꽃 회화에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 꽃 한 송이를 화면 가득 확대한 구도, 부드러운 꽃잎의 곡선과 섬세한 색 변화, 찻집은 배경에 작게 배치. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "미국",
+    "05 · 노먼 록웰 — 이야기 삽화",
+    "일상의 이야기와 풍부한 표정",
+    "꽃이 있는 작은 찻집을 노먼 록웰 — 이야기 삽화에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 반갑게 인사하는 이웃들, 자연스러운 표정, 세밀한 사물과 따뜻한 색으로 표현한 일상의 이야기. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "미국",
+    "06 · 그랜트 우드 — 지역주의",
+    "단정한 형태와 중서부 풍경",
+    "꽃이 있는 작은 찻집을 그랜트 우드 — 지역주의에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 미국 중서부의 둥근 언덕, 정돈된 나무와 건물, 단정한 윤곽선과 매끈한 표면. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "미국",
+    "07 · 잭슨 폴록 — 액션 페인팅",
+    "흩뿌린 물감과 역동적인 선",
+    "꽃이 있는 작은 찻집을 잭슨 폴록 — 액션 페인팅에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 구체적인 사물 대신 찻집의 활기를 표현한 추상화, 커피빛 갈색과 꽃의 노랑·분홍, 물감의 흩뿌림과 얽힌 선. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "미국",
+    "08 · 마크 로스코 — 색면 회화",
+    "넓은 색면과 흐릿한 경계",
+    "꽃이 있는 작은 찻집을 마크 로스코 — 색면 회화에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 사물 대신 따뜻한 분위기를 표현한 추상화, 크림색·살구색·깊은 붉은색의 넓은 직사각형 색면과 번지는 경계. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "미국",
+    "09 · 키스 해링 — 선 중심 팝아트",
+    "단순한 인물과 움직임의 선",
+    "꽃이 있는 작은 찻집을 키스 해링 — 선 중심 팝아트에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 즐겁게 어울리는 사람들, 굵은 검은 선과 단순한 인물, 움직임을 나타내는 짧은 선과 밝은 원색. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ],
+  [
+    "미국",
+    "10 · 장 미셸 바스키아 — 신표현주의",
+    "거친 선과 겹쳐진 색",
+    "꽃이 있는 작은 찻집을 장 미셸 바스키아 — 신표현주의에서 영감을 받은 이미지로 만들어줘. 다음 특징을 살려줘: 거친 선, 겹쳐진 색, 단순화한 꽃과 찻잔, 문자 대신 추상 기호를 사용한 즉흥적인 화면. 정사각형 이미지로 만들고 글자, 로고, 워터마크는 넣지 말아줘."
+  ]
+];
+const container=document.getElementById('cards');
+prompts.forEach(([region,title,detail,prompt],i)=>{const card=document.createElement('article');card.className='card';card.dataset.region=region.split(' · ')[0];const tag=document.createElement('span');tag.className='pill';tag.textContent=region;const heading=document.createElement('h3');heading.textContent=title;const desc=document.createElement('p');desc.textContent=detail;const input=document.createElement('textarea');input.id='prompt-'+i;input.value=prompt;input.setAttribute('aria-label',title+' 프롬프트');const actions=document.createElement('div');actions.className='actions';const button=document.createElement('button');button.type='button';button.textContent='프롬프트 복사';const status=document.createElement('span');status.className='status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');button.onclick=async()=>{try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(input.value)}else{input.focus();input.select();if(!document.execCommand('copy'))throw new Error('copy failed')}status.textContent='복사했어요! AI 입력창에 붙여넣으세요.'}catch(e){input.focus();input.select();status.textContent='선택된 글을 직접 복사해 주세요.'}};actions.append(button,status);const figure=document.createElement('figure');figure.className='sample';const imageLink=document.createElement('a');imageLink.href='ai-style-'+String(i+1).padStart(2,'0')+'.png';imageLink.target='_blank';imageLink.rel='noopener';imageLink.setAttribute('aria-label',title+' 이미지 크게 보기');const sampleImage=document.createElement('img');sampleImage.src=imageLink.href;sampleImage.alt=title+' 프롬프트로 생성한 정사각형 AI 예시 이미지';sampleImage.loading='lazy';sampleImage.width=1254;sampleImage.height=1254;imageLink.append(sampleImage);const caption=document.createElement('figcaption');caption.textContent='AI 생성 샘플 · '+region+' · 이미지를 누르면 크게 볼 수 있어요';figure.append(imageLink,caption);const imageActions=document.createElement('div');imageActions.className='actions';const openLink=document.createElement('a');openLink.className='sample-action';openLink.href=imageLink.href;openLink.target='_blank';openLink.rel='noopener';openLink.textContent='이미지 크게 보기';const saveLink=document.createElement('a');saveLink.className='sample-action';saveLink.href=imageLink.href;saveLink.download=region.split(' · ')[0]+'_'+title+'.png';saveLink.textContent='이미지 저장';imageActions.append(openLink,saveLink);card.append(tag,heading,desc,figure,imageActions,input,actions);container.append(card)});
+document.querySelectorAll('#regionFilters button').forEach(button=>button.addEventListener('click',()=>{const chosen=button.dataset.region;document.querySelectorAll('#cards .card').forEach(card=>{card.hidden=chosen!=='전체'&&card.dataset.region!==chosen});document.querySelectorAll('#regionFilters button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)))}));</script>
+</body></html>
+
+
+
